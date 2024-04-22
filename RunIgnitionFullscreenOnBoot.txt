@@ -1,0 +1,57 @@
+Full Tutorial: http://fisherworks.cn/?p=2517
+
+First:
+
+#! /bin/bash
+sudo apt update && sudo apt dist-upgrade
+sudo apt install vim-nox openssh-server chromium-browser x11vnc slick-greeter -y
+
+Second:
+
+Edit this file
+sudo nano /etc/lightdm/lightdm.conf
+
+Put this into that file above:
+[SeatDefaults]
+autologin-user=operator
+autologin-user-timeout=0
+user-session=ubuntu
+greeter-session=unity-greeter
+
+
+Third:
+Create this file:
+sudo nano /etc/lightdm/lightdm.conf.d/50-myconfig.conf
+
+Put this into that file above:
+[SeatDefaults]
+autologin-user=operator
+
+
+Fourth:
+
+Create this file:
+sudo mkdir /home/operator/.config/autostart && sudo nano /home/operator/.config/autostart/operator.desktop
+
+Put this into that file above:
+[Desktop Entry]
+Type=Application
+Name=StartIgnition
+Exec=/home/operator/StartIgnition.sh
+X-GNOME-Autostart-enabled=true
+
+
+Fifth:
+
+Create this file:
+nano /home/operator/StartIgnition.sh
+
+Put this into that file above:
+#!/bin/bash
+
+export DISPLAY=:0
+ 
+sed -i 's/"exited_cleanly":false/"exited_cleanly":true/' /home/operator/.config/chromium/Default/Preferences
+sed -i 's/"exit_type":"Crashed"/"exit_type":"Normal"/' /home/operator/.config/chromium/Default/Preferences
+
+/usr/bin/chromium-browser --kiosk http://localhost:8088/data/perspective/client/ADTA-HMI &

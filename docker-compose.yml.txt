@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  codesys:
+    container_name: bac-amzl-codesys-ignition
+    image: docker.io/bactran/bac-amzl-codesys:latest
+    network_mode: "host"
+    volumes:
+      - codesys-data:/data
+      - ./CODESYSControl_User.cfg:/etc/CODESYSControl_User.cfg:ro
+      - codesys-pvc:/var/opt/codesys
+    uts: host
+    restart: unless-stopped
+  # Ignition Gateway
+  gateway:
+    image: inductiveautomation/ignition:latest
+    ports:
+      - 9088:8088
+      - 9043:8043
+    volumes:
+      - gw-data:/usr/local/bin/ignition/data
+    # env_file: ignition.env  # optionally specify variables in a file, or using `environment:` below
+    environment:
+      - ACCEPT_IGNITION_EULA=Y
+      - GATEWAY_ADMIN_USERNAME=cse
+      - GATEWAY_ADMIN_PASSWORD_FILE=cse
+      - IGNITION_EDITION=maker
+      - TZ=America/Los_Angeles  # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
+  #DB for Ignition   
+  db:
+    image: mariadb:latest
+    container_name: maria-db-ignition
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: cse
+      MYSQL_DATABASE: Ignition
+      MYSQL_USER: cse
+      MYSQL_PASSWORD: cse
+    volumes:
+      - db-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+volumes:
+  db-data:
+  gw-data:
+  codesys-data:
+  codesys-pvc:

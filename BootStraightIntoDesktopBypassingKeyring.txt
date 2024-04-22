@@ -1,0 +1,8 @@
+To boot in staright into the Desktop environment on Ubuntu 22.04 with saved password for the Remote Desktop and VNC:
+1. Select AutoLogin from the User Settings.
+2. Create a Keyring with Zero encryption and security feature from the "Password and Key".
+3. Delete the Remote Desktop and VNC password keys from the default keyring.
+4. Select Zero Security Keyring as the default.
+5. Setup the Remote Desktop again to make it save the password key to the default (Zero Security) keyring.
+6. Confirm that it has been created.
+7. Select the original keyring as default.
