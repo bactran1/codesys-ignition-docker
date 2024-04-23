@@ -15,8 +15,8 @@ services:
   gateway:
     image: inductiveautomation/ignition:latest
     ports:
-      - 9088:8088
-      - 9043:8043
+      - 8088:8088
+      - 8043:8043
     volumes:
       - gw-data:/usr/local/bin/ignition/data
     # env_file: ignition.env  # optionally specify variables in a file, or using `environment:` below
