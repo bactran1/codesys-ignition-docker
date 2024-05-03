@@ -14,6 +14,7 @@ services:
   # Ignition Gateway
   gateway:
     image: inductiveautomation/ignition:latest
+    restart: unless-stopped
     ports:
       - 8088:8088
       - 8043:8043
