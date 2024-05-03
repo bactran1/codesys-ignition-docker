@@ -1,5 +1,7 @@
 Full Tutorial: http://fisherworks.cn/?p=2517
 
+Remember to change from "operator" -> "$your current user$"
+
 First:
 
 #! /bin/bash
