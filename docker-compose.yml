@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   codesys:
     container_name: bac-amzl-codesys-ignition
