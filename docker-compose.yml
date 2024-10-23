@@ -1,7 +1,7 @@
 services:
   codesys:
-    container_name: bac-amzl-codesys-ignition
-    image: docker.io/bactran/bac-amzl-codesys:latest
+    container_name: bac-amzl-codesys
+    image: bactran/bac-amzl-codesys:latest
     network_mode: "host"
     volumes:
       - codesys-data:/data
@@ -11,21 +11,21 @@ services:
     restart: unless-stopped
     
   # Ignition Gateway
-  gateway:
-    image: inductiveautomation/ignition:latest
-    restart: unless-stopped
-    ports:
-      - 8088:8088
-      - 8043:8043
-    volumes:
-      - gw-data:/usr/local/bin/ignition/data
-    # env_file: ignition.env  # optionally specify variables in a file, or using `environment:` below
-    environment:
-      - ACCEPT_IGNITION_EULA=Y
-      - GATEWAY_ADMIN_USERNAME=cse
-      - GATEWAY_ADMIN_PASSWORD_FILE=cse
-      - IGNITION_EDITION=edge
-      - TZ=America/Los_Angeles  # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
+  #gateway:
+  #  image: inductiveautomation/ignition:latest
+  ##  restart: unless-stopped
+  #  ports:
+  #    - 8088:8088
+  #    - 8043:8043
+  #  volumes:
+  #    - gw-data:/usr/local/bin/ignition/data
+  #  # env_file: ignition.env  # optionally specify variables in a file, or using `environment:` below
+  #  environment:
+  #    - ACCEPT_IGNITION_EULA=Y
+  #    - GATEWAY_ADMIN_USERNAME=cse
+  #    - GATEWAY_ADMIN_PASSWORD_FILE=cse
+  #    - IGNITION_EDITION=edge
+  #    - TZ=America/Los_Angeles  # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
   
   #DB for Ignition   
   db:
