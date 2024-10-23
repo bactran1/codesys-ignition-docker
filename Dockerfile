@@ -4,7 +4,7 @@
 FROM debian:buster
 
 RUN apt-get update && \
-    apt-get install -y wget unzip
+    apt-get install -y wget unzip nano htop
 
 #
 # Add CODESYS package

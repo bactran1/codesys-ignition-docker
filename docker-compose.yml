@@ -1,4 +1,10 @@
 services:
+  wcs:
+    container_name: bac-wcs
+    image: bactran/wcs-emulator:latest
+    network_mode: "host"
+    restart: unless-stopped
+    
   codesys:
     container_name: bac-amzl-codesys
     image: bactran/bac-amzl-codesys:latest
