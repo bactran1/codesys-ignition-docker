@@ -11,9 +11,9 @@ services:
     network_mode: "host"
     volumes:
       - codesys-data:/data
-      #- ./CODESYSControl_User.cfg:/etc/CODESYSControl_User.cfg:ro
-      #- codesys-pvc:/var/opt/codesys
-    uts: host
+      - ./CODESYSControl_User.cfg:/etc/CODESYSControl_User.cfg:ro
+      - codesys-pvc:/var/opt/codesys
+    #uts: host
     restart: unless-stopped
     
   # Ignition Gateway
