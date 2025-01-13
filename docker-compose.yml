@@ -30,6 +30,22 @@ services:
   #    - ACCEPT_IGNITION_EULA=Y
   #    - GATEWAY_ADMIN_USERNAME=cse
   #    - GATEWAY_ADMIN_PASSWORD_FILE=cse
+  #    - IGNITION_EDITION=standard
+  #    - TZ=America/Los_Angeles  # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
+
+  #gateway-edge:
+  #  image: inductiveautomation/ignition:latest
+  #  restart: unless-stopped
+  #  ports:
+  #    - 9088:8088
+  #    - 9043:8043
+  #  volumes:
+  #    - gw-data-edge:/usr/local/bin/ignition/data
+  #  # env_file: ignition.env  # optionally specify variables in a file, or using `environment:` below
+  #  environment:
+  #    - ACCEPT_IGNITION_EULA=Y
+  #    - GATEWAY_ADMIN_USERNAME=cse
+  #    - GATEWAY_ADMIN_PASSWORD_FILE=cse
   #    - IGNITION_EDITION=edge
   #    - TZ=America/Los_Angeles  # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
   
