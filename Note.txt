@@ -1,0 +1,3 @@
+Codesys Runtime root directory is at /var/opt/codesys/...
+Runtime Config is at /etc/codesyscontrol
+Codesys binary (maybe this is the runtime binary. Lib folders are here too) is at /opt/codesys/bin <-- to start the runtime manually, run sudo ./codesyscontrol.bin
