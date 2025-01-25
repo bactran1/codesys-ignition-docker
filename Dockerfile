@@ -1,10 +1,10 @@
 #
 # Install CODESYS on a plain Debian container
 #
-FROM debian:buster
+FROM ubuntu:22.04
 
 RUN apt-get update && \
-    apt-get install -y wget unzip nano htop
+    apt-get install -y wget unzip nano htop net-tools
 
 #
 # Add CODESYS package
